@@ -56,7 +56,6 @@ body {
 
 .category button {
   height:50px;
-  width:100%;
   border-radius:10px;
   border:1px solid #cfd8e3;
   background:white;
@@ -75,6 +74,7 @@ body {
   padding:15px;
   border-radius:15px;
   box-shadow:0 2px 8px rgba(0,0,0,0.05);
+  position:relative;
 }
 
 .tag {
@@ -103,8 +103,11 @@ body {
   margin-top:5px;
 }
 
+/* 원문보기 버튼 */
 .btn {
-  float:right;
+  position:absolute;
+  right:15px;
+  bottom:15px;
   border:1px solid #cfd8e3;
   padding:6px 10px;
   border-radius:8px;
@@ -126,18 +129,32 @@ body {
   background:#0f3470;
   color:white;
   padding:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
 }
 
-.tel-btn {
-  display:block;
+.footer-left {
+  font-size:14px;
+}
+
+.footer-left div {
+  margin-bottom:5px;
+}
+
+/* 전화 박스 (오른쪽 작은 박스) */
+.tel-box {
   background:#c69a4b;
-  color:white;
-  padding:15px;
+  padding:15px 20px;
   border-radius:12px;
-  text-align:center;
-  font-size:18px;
   font-weight:700;
-  margin-top:10px;
+  font-size:16px;
+}
+
+.tel-box a {
+  color:white;
+  text-decoration:none; /* 밑줄 제거 */
 }
 </style>
 </head>
@@ -176,14 +193,21 @@ body {
 </div>
 
 <div class="footer">
-  노무법인 위드유 법원지사<br>
-  전화 051-505-5128<br>
-  팩스 051-505-5127<br>
-  블로그 blog.naver.com/hocpla5128
 
-  <a href="tel:0515055128" class="tel-btn">
-  📞 전화 상담 바로 연결 051-505-5128
-  </a>
+  <div class="footer-left">
+    <div>노무법인 위드유 법원지사</div>
+    <div>전화 051-505-5128</div>
+    <div>팩스 051-505-5127</div>
+    <div>블로그 blog.naver.com/hocpla5128</div>
+  </div>
+
+  <div class="tel-box">
+    <a href="tel:0515055128">
+      📞 전화 상담 바로 연결<br>
+      051-505-5128
+    </a>
+  </div>
+
 </div>
 
 </body>
