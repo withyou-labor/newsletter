@@ -1,30 +1,158 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>노무법인 위드유 법원지사 뉴스레터</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>노무법인 위드유 법원지사 뉴스레터</title>
+
+<style>
+body {
+  margin:0;
+  font-family: 'Noto Sans KR', sans-serif;
+  background:#f6f8fc;
+}
+
+/* 상단 */
+.header {
+  text-align:center;
+  padding:30px 20px;
+  background:white;
+}
+
+.header img {
+  width:100px;
+  margin-bottom:10px;
+}
+
+.title {
+  font-size:32px;
+  font-weight:800;
+  color:#0f3470;
+}
+
+.subtitle {
+  color:#666;
+  margin-top:5px;
+}
+
+/* 카테고리 */
+.category {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  padding:15px;
+}
+
+.category button {
+  height:50px;
+  border-radius:10px;
+  border:1px solid #cfd8e3;
+  background:white;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.category .active {
+  background:#0f3470;
+  color:white;
+}
+
+/* 카드 */
+.card {
+  background:white;
+  margin:10px;
+  padding:15px;
+  border-radius:15px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
+
+.card h3 {
+  margin:0;
+  font-size:18px;
+}
+
+.card p {
+  color:#555;
+  font-size:14px;
+}
+
+.btn {
+  float:right;
+  border:1px solid #cfd8e3;
+  padding:6px 10px;
+  border-radius:8px;
+}
+
+/* 안내 */
+.notice {
+  background:#eef3fb;
+  padding:12px;
+  margin:10px;
+  border-radius:10px;
+  text-align:center;
+  font-weight:600;
+}
+
+/* 하단 */
+.footer {
+  background:#0f3470;
+  color:white;
+  padding:20px;
+}
+
+.tel-btn {
+  display:block;
+  background:#c69a4b;
+  color:white;
+  padding:15px;
+  border-radius:12px;
+  text-align:center;
+  font-size:18px;
+  font-weight:700;
+  margin-top:10px;
+}
+</style>
 </head>
-<body style="font-family: sans-serif; padding:20px;">
 
-<h1>노무법인 위드유 법원지사 뉴스레터</h1>
+<body>
 
-<p>2026년 4월 23일</p>
+<div class="header">
+  <img src="logo.png">
+  <div class="title">주간 노동법 뉴스레터</div>
+  <div class="subtitle">주요 노동 이슈와 판례, 정책 동향</div>
+</div>
 
-<hr>
+<div class="category">
+  <button class="active">전체</button>
+  <button>판례·행정해석</button>
+  <button>노동정책·입법</button>
+  <button>집단적노사관계</button>
+  <button>산재·안전</button>
+  <button>부당해고·징계</button>
+  <button>직장내괴롭힘</button>
+  <button>임금·근로시간</button>
+</div>
 
-<h2>노동 정책</h2>
-<p>
-<a href="https://news.naver.com" target="_blank">
-노동 관련 뉴스 예시 1
-</a>
-</p>
+<div class="card">
+  <h3>최저임금 10,030원 확정</h3>
+  <p>2026년부터 적용됩니다.</p>
+  <a class="btn" href="#">원문보기</a>
+</div>
 
-<h2>판례</h2>
-<p>
-<a href="https://news.naver.com" target="_blank">
-판례 관련 뉴스 예시 2
-</a>
-</p>
+<div class="notice">
+복잡한 노동문제 노무법인 위드유 법원지사와 함께 하세요
+</div>
+
+<div class="footer">
+  노무법인 위드유 법원지사<br>
+  전화 051-505-5128<br>
+  팩스 051-505-5127<br>
+  블로그 blog.naver.com/hocpla5128
+
+  <a href="tel:0515055128" class="tel-btn">
+  📞 전화 바로 연결 051-505-5128
+  </a>
+</div>
 
 </body>
 </html>
