@@ -1,245 +1,419 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>노무법인 위드유 법원지사 뉴스레터</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>노무법인 위드유 법원지사 뉴스레터</title>
+  <style>
+    :root {
+      --navy: #123c82;
+      --navy-dark: #0f3470;
+      --bg: #f5f7fb;
+      --card-bg: #ffffff;
+      --line: #d7dfeb;
+      --text: #111827;
+      --subtext: #5b6472;
+      --muted: #8b95a7;
+      --gold: #c99c49;
+      --tag-blue-bg: #eef3ff;
+      --tag-blue-text: #2c58c9;
+      --tag-orange-bg: #fff1e9;
+      --tag-orange-text: #e36a2e;
+      --notice-bg: #eef3fb;
+    }
 
-<style>
-body {
-  margin:0;
-  font-family:'Noto Sans KR',sans-serif;
-  background:#f5f7fb;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-/* 헤더 */
-.header {
-  text-align:center;
-  padding:30px 15px;
-  background:white;
-}
+    body {
+      margin: 0;
+      font-family: "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
 
-.header img {
-  width:90px;
-}
+    a {
+      text-decoration: none;
+    }
 
-.firm {
-  font-weight:700;
-  margin-top:10px;
-  color:#0f3470;
-}
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding-bottom: 24px;
+    }
 
-.title {
-  font-size:32px;
-  font-weight:800;
-  color:#0f3470;
-  margin-top:15px;
-}
+    .header {
+      text-align: center;
+      padding: 30px 16px 26px;
+      background: #fff;
+    }
 
-.sub {
-  color:#666;
-  margin-top:5px;
-}
+    .header img {
+      width: 90px;
+      display: block;
+      margin: 0 auto;
+    }
 
-.date {
-  margin-top:10px;
-  color:#444;
-}
+    .firm {
+      margin-top: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy-dark);
+    }
 
-/* 카테고리 */
-.category {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-  padding:15px;
-}
+    .title {
+      margin-top: 14px;
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--navy-dark);
+      letter-spacing: -0.02em;
+    }
 
-.category button {
-  height:50px;
-  border-radius:10px;
-  border:1px solid #cfd8e3;
-  background:white;
-  font-weight:600;
-}
+    .subtitle {
+      margin-top: 8px;
+      font-size: 16px;
+      color: #666;
+    }
 
-.category .active {
-  background:#0f3470;
-  color:white;
-}
+    .date {
+      margin-top: 12px;
+      font-size: 14px;
+      color: #444;
+    }
 
-/* 카드 */
-.card {
-  background:white;
-  margin:10px;
-  padding:15px;
-  border-radius:15px;
-  box-shadow:0 2px 8px rgba(0,0,0,0.05);
-  position:relative;
-}
+    .category {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      padding: 16px;
+    }
 
-.tag {
-  display:inline-block;
-  background:#eef3ff;
-  color:#2453c3;
-  padding:4px 10px;
-  border-radius:20px;
-  font-size:13px;
-  margin-bottom:8px;
-}
+    .category-btn {
+      height: 50px;
+      border-radius: 12px;
+      border: 1px solid #cfd8e3;
+      background: #fff;
+      color: #111;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.15s ease;
+    }
 
-.card h3 {
-  margin:0;
-  font-size:18px;
-}
+    .category-btn.active {
+      background: var(--navy-dark);
+      color: #fff;
+      border-color: var(--navy-dark);
+    }
 
-.card p {
-  font-size:14px;
-  color:#555;
-}
+    .news-list {
+      padding: 0 10px;
+    }
 
-.source {
-  font-size:12px;
-  color:#888;
-  margin-top:5px;
-}
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 18px 18px 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(18, 60, 130, 0.05);
+    }
 
-/* 원문보기 */
-.btn {
-  position:absolute;
-  right:15px;
-  bottom:15px;
-  border:1px solid #cfd8e3;
-  padding:6px 10px;
-  border-radius:8px;
-  font-size:13px;
-}
+    .meta-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
 
-/* 안내 */
-.notice {
-  background:#eef3fb;
-  padding:12px;
-  margin:10px;
-  border-radius:10px;
-  text-align:center;
-  font-weight:600;
-}
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1;
+      white-space: nowrap;
+    }
 
-/* 하단 */
-.footer {
-  background:#0f3470;
-  color:white;
-  padding:20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
-}
+    .tag-blue {
+      background: var(--tag-blue-bg);
+      color: var(--tag-blue-text);
+    }
 
-.footer-left {
-  font-size:14px;
-}
+    .tag-orange {
+      background: var(--tag-orange-bg);
+      color: var(--tag-orange-text);
+    }
 
-.footer-left div {
-  margin-bottom:5px;
-}
+    .meta-source,
+    .meta-date {
+      font-size: 12px;
+      color: var(--muted);
+    }
 
-/* 전화 박스 (완전 수정) */
-.tel-box {
-  background:#c69a4b;
-  padding:15px 20px;
-  border-radius:12px;
-}
+    .card-title {
+      margin: 0 0 10px;
+      font-size: 18px;
+      line-height: 1.45;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
 
-.tel-box a {
-  color:white;
-  text-decoration:none;
-  display:block;
-}
+    .card-summary {
+      margin: 0 0 12px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--subtext);
+    }
 
-/* 핵심 정렬 */
-.tel-inner {
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-top: 1px solid #e9edf4;
+      padding-top: 12px;
+    }
 
-.tel-icon {
-  font-size:20px;
-}
+    .card-source {
+      font-size: 13px;
+      color: var(--muted);
+      min-width: 0;
+    }
 
-.tel-text {
-  display:flex;
-  flex-direction:column;
-  line-height:1.3;
-}
+    .read-link {
+      flex-shrink: 0;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--tag-blue-text);
+      white-space: nowrap;
+    }
 
-.tel-top {
-  font-size:14px;
-  font-weight:600;
-}
+    .notice {
+      background: var(--notice-bg);
+      border-radius: 12px;
+      margin: 10px;
+      padding: 14px 16px;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 700;
+      color: #111827;
+    }
 
-.tel-number {
-  font-size:18px;
-  font-weight:800;
-}
-</style>
+    .footer {
+      margin: 10px;
+      background: var(--navy-dark);
+      color: #fff;
+      border-radius: 0;
+      padding: 20px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-left {
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .footer-left .footer-name {
+      font-size: 15px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .tel-box {
+      background: var(--gold);
+      border-radius: 14px;
+      padding: 14px 18px;
+      min-width: 260px;
+    }
+
+    .tel-box a {
+      color: #fff;
+      display: block;
+    }
+
+    .tel-inner {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .tel-icon {
+      font-size: 24px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .tel-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.3;
+      text-align: left;
+    }
+
+    .tel-top {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .tel-number {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .category {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .title {
+        font-size: 28px;
+      }
+
+      .subtitle {
+        font-size: 15px;
+      }
+
+      .card-title {
+        font-size: 17px;
+      }
+
+      .card-summary {
+        font-size: 14px;
+      }
+
+      .card-footer {
+        align-items: flex-start;
+      }
+
+      .footer {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .tel-box {
+        min-width: 0;
+        width: 100%;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="wrap">
+    <div class="header">
+      <img src="logo.png" alt="노무법인 위드유 법원지사 로고" />
+      <div class="firm">노무법인 위드유 법원지사</div>
+      <div class="title">주간 노동법 뉴스레터</div>
+      <div class="subtitle">주요 노동 이슈와 판례, 정책 동향을 정리해드립니다.</div>
+      <div class="date">📅 2026.04.23 (목)</div>
+    </div>
 
-<div class="header">
-  <img src="logo.png">
-  <div class="firm">노무법인 위드유 법원지사</div>
-  <div class="title">주간 노동법 뉴스레터</div>
-  <div class="sub">주요 노동 이슈와 판례, 정책 동향을 정리해드립니다.</div>
-  <div class="date">📅 2026.04.23 (목)</div>
-</div>
+    <div class="category">
+      <button class="category-btn active" data-category="전체">전체</button>
+      <button class="category-btn" data-category="판례·행정해석">판례·행정해석</button>
+      <button class="category-btn" data-category="노동정책·입법">노동정책·입법</button>
+      <button class="category-btn" data-category="집단적노사관계">집단적노사관계</button>
+      <button class="category-btn" data-category="산재·안전">산재·안전</button>
+      <button class="category-btn" data-category="부당해고·징계">부당해고·징계</button>
+      <button class="category-btn" data-category="직장내괴롭힘">직장내괴롭힘</button>
+      <button class="category-btn" data-category="임금·근로시간">임금·근로시간</button>
+    </div>
 
-<div class="category">
-  <button class="active">전체</button>
-  <button>판례·행정해석</button>
-  <button>노동정책·입법</button>
-  <button>집단적노사관계</button>
-  <button>산재·안전</button>
-  <button>부당해고·징계</button>
-  <button>직장내괴롭힘</button>
-  <button>임금·근로시간</button>
-</div>
-
-<div class="card">
-  <span class="tag">판례·행정해석</span>
-  <h3>노동절 휴일대체 불가 - 고용노동부 공식 행정해석</h3>
-  <p>근로자의 날은 법정공휴일로서 대체가 불가능하다는 고용노동부 행정해석이 확인되었습니다.</p>
-  <div class="source">출처: 고용노동부 </div>
-  <a class="btn" href="https://www.worklaw.co.kr/main2022/view/view.asp?in_cate=123&in_cate2=0&bi_pidx=39068" target="_blank">원문보기</a>
-</div>
-
-<div class="notice">
-복잡한 노동문제 노무법인 위드유 법원지사와 함께 하세요
-</div>
-
-<div class="footer">
-
-  <div class="footer-left">
-    <div>노무법인 위드유 법원지사</div>
-    <div>전화 051-505-5128</div>
-    <div>팩스 051-505-5127</div>
-    <div>블로그 blog.naver.com/hocpla5128</div>
-  </div>
-
-  <div class="tel-box">
-    <a href="tel:0515055128">
-      <div class="tel-inner">
-        <div class="tel-icon">📞</div>
-        <div class="tel-text">
-          <div class="tel-top">전화 상담 바로 연결</div>
-          <div class="tel-number">051-505-5128</div>
+    <div class="news-list">
+      <div class="card" data-category="판례·행정해석">
+        <div class="meta-row">
+          <span class="tag tag-orange">실무필수</span>
+          <span class="meta-source">고용노동부</span>
+          <span class="meta-date">· 4.9</span>
+        </div>
+        <h3 class="card-title">노동절 휴일대체 불가 - 고용노동부 공식 행정해석</h3>
+        <p class="card-summary">
+          근로자의 날은 법정공휴일로서 대체가 불가능하다는 고용노동부 행정해석이 확인되었습니다.
+        </p>
+        <div class="card-footer">
+          <div class="card-source">출처: 고용노동부</div>
+          <a class="read-link" href="https://www.worklaw.co.kr/main2022/view/view.asp?in_cate=123&in_cate2=0&bi_pidx=39068" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
         </div>
       </div>
-    </a>
+
+      <div class="card" data-category="노동정책·입법">
+        <div class="meta-row">
+          <span class="tag tag-blue">정책</span>
+          <span class="meta-source">고용노동부</span>
+          <span class="meta-date">· 4.10</span>
+        </div>
+        <h3 class="card-title">2026년 최저임금 시간당 10,030원 확정</h3>
+        <p class="card-summary">
+          2026년도 최저임금이 시간당 10,030원으로 결정되었습니다. 전년 대비 인상된 금액으로 차년도부터 적용됩니다.
+        </p>
+        <div class="card-footer">
+          <div class="card-source">출처: 고용노동부</div>
+          <a class="read-link" href="https://www.moel.go.kr/" target="_blank" rel="noopener noreferrer">원문 보기 →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="notice">복잡한 노동문제 노무법인 위드유 법원지사와 함께 하세요</div>
+
+    <div class="footer">
+      <div class="footer-left">
+        <div class="footer-name">노무법인 위드유 법원지사</div>
+        <div>전화 051-505-5128</div>
+        <div>팩스 051-505-5127</div>
+        <div>블로그 blog.naver.com/hocpla5128</div>
+      </div>
+
+      <div class="tel-box">
+        <a href="tel:0515055128">
+          <div class="tel-inner">
+            <div class="tel-icon">📞</div>
+            <div class="tel-text">
+              <div class="tel-top">전화 상담 바로 연결</div>
+              <div class="tel-number">051-505-5128</div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
   </div>
 
-</div>
+  <script>
+    const categoryButtons = document.querySelectorAll(".category-btn");
+    const cards = document.querySelectorAll(".card");
 
+    categoryButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const selected = button.dataset.category;
+
+        categoryButtons.forEach((btn) => btn.classList.remove("active"));
+        button.classList.add("active");
+
+        cards.forEach((card) => {
+          const cardCategory = card.dataset.category;
+
+          if (selected === "전체" || selected === cardCategory) {
+            card.classList.remove("hidden");
+          } else {
+            card.classList.add("hidden");
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
