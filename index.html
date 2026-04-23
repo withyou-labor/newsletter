@@ -103,7 +103,7 @@ body {
   margin-top:5px;
 }
 
-/* 원문보기 버튼 */
+/* 원문보기 */
 .btn {
   position:absolute;
   right:15px;
@@ -143,15 +143,11 @@ body {
   margin-bottom:5px;
 }
 
-/* 전화 박스 (수정된 부분) */
+/* 전화 박스 (완전 수정) */
 .tel-box {
   background:#c69a4b;
   padding:15px 20px;
   border-radius:12px;
-  font-weight:700;
-  font-size:16px;
-  text-align:left;
-  line-height:1.4;
 }
 
 .tel-box a {
@@ -160,9 +156,31 @@ body {
   display:block;
 }
 
-.tel-box a br {
-  display:block;
-  margin-top:4px;
+/* 핵심 정렬 */
+.tel-inner {
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.tel-icon {
+  font-size:20px;
+}
+
+.tel-text {
+  display:flex;
+  flex-direction:column;
+  line-height:1.3;
+}
+
+.tel-top {
+  font-size:14px;
+  font-weight:600;
+}
+
+.tel-number {
+  font-size:18px;
+  font-weight:800;
 }
 </style>
 </head>
@@ -211,8 +229,13 @@ body {
 
   <div class="tel-box">
     <a href="tel:0515055128">
-      📞 전화 상담 바로 연결<br>
-      051-505-5128
+      <div class="tel-inner">
+        <div class="tel-icon">📞</div>
+        <div class="tel-text">
+          <div class="tel-top">전화 상담 바로 연결</div>
+          <div class="tel-number">051-505-5128</div>
+        </div>
+      </div>
     </a>
   </div>
 
